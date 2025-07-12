@@ -1,0 +1,150 @@
+body {
+    font-family: 'Malgun Gothic', '맑은 고딕', Dotum, 돋움, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #e9ecef;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+header h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+main {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h2, h3 {
+    color: #2980b9;
+    /* border-bottom: 2px solid #e7e7e7; */ /* Collapsible header에 통합 */
+    padding-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #34495e;
+    border-bottom: 1px dashed #e7e7e7;
+}
+
+ul, ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+blockquote {
+    background: #ecf0f1;
+    border-left: 5px solid #3498db;
+    margin: 1.5em 0;
+    padding: 1em 1.5em;
+    color: #555;
+    font-style: italic;
+}
+
+strong {
+    color: #e74c3c;
+}
+
+code {
+    background: #f1f1f1;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    color: #c0392b;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.lesson-section {
+    margin-bottom: 30px;
+}
+
+/* Collapsible styles */
+.collapsible-section {
+    margin-bottom: 20px; /* 각 접기 가능한 섹션 간의 간격 */
+}
+
+.collapsible-header {
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    margin-bottom: 0; /* 내용과 헤더 사이 마진 조정 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.collapsible-header:hover {
+    background-color: #2980b9;
+}
+
+.collapsible-content {
+    display: none;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    background-color: #fcfcfc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 약간의 그림자 추가 */
+}
+
+.collapsible-content.active {
+    display: block;
+}
+
+.arrow {
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.collapsible-header.active .arrow {
+    transform: rotate(180deg);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 40px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    color: #777;
+    font-size: 0.9em;
+    border-top: 1px solid #e0e0e0;
+}

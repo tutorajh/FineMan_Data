@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>파인만 기법으로 배우는 데이터 분석_3차시</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<header>
+    <h1>[수업 지도안] 파인만 기법으로 배우는 고등학교 데이터 분석 (3차시)</h1>
+    <p><strong>파일명</strong>: <code>고등학교_데이터분석_수업지도안.md</code></p>
+    <p><strong>대상</strong>: 고등학교 2학년</p>
+    <p><strong>주제</strong>: 실생활 데이터(전 세계 패스트푸드 영양 정보)를 활용한 데이터 분석 기초 실습</p>
+    <div class="collapsible-section">
+        <h2 class="collapsible-header">수업 목표 및 핵심 교육 방식 <span class="arrow">▼</span></h2>
+        <div class="collapsible-content active"> <h3>수업 목표:</h3>
+            <ul>
+                <li>데이터 분석의 전 과정을 이해하고, 데이터 속에 숨겨진 의미를 발견하는 즐거움을 느낀다.</li>
+                <li>데이터 정제, 기초 통계, 시각화의 기본 개념을 파인만 기법을 통해 쉽게 설명할 수 있다.</li>
+                <li>구글 시트(또는 엑셀)의 기본 기능을 활용하여 직접 데이터를 분석하고, 결과를 시각화하여 표현할 수 있다.</li>
+            </ul>
+            <h3>핵심 교육 방식: <strong>파인만 기법(Feynman Technique)</strong></h3>
+            <ol>
+                <li><strong>1단계 (선택)</strong>: 분석하고 싶은 주제(데이터)를 정한다.</li>
+                <li><strong>2단계 (설명)</strong>: 마치 초등학생에게 설명하듯, 가장 단순하고 쉬운 용어와 비유로 개념을 설명한다.</li>
+                <li><strong>3단계 (확인)</strong>: 설명이 막히는 부분을 확인하고, 그 부분을 다시 학습하여 보충한다.</li>
+                <li><strong>4단계 (정리)</strong>: 다시 자신만의 언어로 완벽하게 설명하며 이야기를 만들어본다.</li>
+            </ol>
+        </div>
+    </div>
+    <div class="collapsible-section">
+        <h2 class="collapsible-header">준비물 <span class="arrow">▼</span></h2>
+        <div class="collapsible-content active"> <h3>준비물:</h3>
+            <ul>
+                <li><strong>교사</strong>: PC, 프로젝터, 구글 클래스룸 (실습 자료 및 과제 제출용)</li>
+                <li><strong>학생</strong>: 1인 1 PC (인터넷 연결 필수), 구글 계정</li>
+                <li><strong>실습 데이터</strong>: <a href="https://www.kaggle.com/datasets/thedevastator/fast-food-restaurants-in-the-world-nutrition" target="_blank">전 세계 패스트푸드 영양 정보 데이터 (Kaggle)</a> (수업 전, 교사가 필요한 열만 추출하여 <code>.csv</code> 파일로 가공 후 배포)
+                    <ul>
+                        <li><strong>추천 가공 필드</strong>: <code>Company</code>, <code>Item</code>, <code>Calories</code>, <code>Fat (g)</code>, <code>Carbs (g)</code>, <code>Protein (g)</code></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <hr>
+    <section class="lesson-section collapsible-section">
+        <h2 class="collapsible-header">1차시: 데이터 탐정의 첫걸음 - 데이터와 친해지기 🕵️‍♀️ <span class="arrow">▼</span></h2>
+        <div class="collapsible-content">
+            <h3>수업 목표</h3>
+            <ul>
+                <li>데이터 분석이 무엇인지 비유를 통해 이해한다.</li>
+                <li>데이터의 기본 구조(행, 열)를 파악하고, 정렬과 필터 기능을 이용해 원하는 정보를 탐색할 수 있다.</li>
+            </ul>
+            <h3>핵심 질문 (파인만 기법 적용)</h3>
+            <blockquote>"데이터 분석은 '숨은 그림 찾기'나 '탐정 놀이' 같은 거야. 수많은 정보(데이터) 속에서 우리가 궁금한 이야기의 단서(인사이트)를 찾아내는 거지. 어떻게 하면 이 단서들을 잘 찾을 수 있을까?"</blockquote>
+            <h3>수업 흐름 (50분 기준)</h3>
+            <ol>
+                <li><strong>도입 (10분): 데이터 탐정 되기</strong>
+                    <ul>
+                        <li>"여러분, 만약 우리가 전 세계 모든 패스트푸드 메뉴의 영양 정보를 다 볼 수 있다면 뭘 알고 싶나요?" (학생들의 자유로운 답변 유도: "어디가 칼로리가 제일 높아요?", "감자튀김은 어디가 제일 짜요?" 등)</li>
+                        <li>"좋아요! 방금 여러분이 한 질문들이 바로 데이터 분석의 시작이에요. 데이터 분석은 거창한 게 아니라, <strong>데이터에게 올바른 질문을 던지고 답을 찾아가는 과정</strong>이에요. 오늘 우리는 '데이터 탐정'이 되어볼 겁니다."</li>
+                        <li>파인만 기법 소개: "가장 똑똑한 방법은 가장 쉽게 설명하는 거예요. 오늘 배운 건 옆 친구에게 초등학생도 알아듣게 설명해주는 연습을 해볼 거예요."</li>
+                    </ul>
+                </li>
+                <li><strong>전개 (15분): 탐정의 돋보기 - 데이터 살펴보기</strong>
+                    <ul>
+                        <li>구글 시트로 패스트푸드 영양 정보 데이터 열기.</li>
+                        <li><strong>파인만 설명</strong>:
+                            <ul>
+                                <li><strong>데이터셋</strong>: "이 표 전체가 우리의 '사건 현장'이에요. 정보들이 모여있는 곳이죠."</li>
+                                <li><strong>열(Column/Field)</strong>: "'용의자'의 특징 같은 거예요. '이름(Item)', '칼로리', '지방'처럼 각 데이터가 어떤 종류인지 알려주죠."</li>
+                                <li><strong>행(Row/Record)</strong>: "각각의 '용의자' 한 명, 즉 메뉴 하나하나의 정보 묶음이에요. 이 줄에는 '빅맥'의 모든 정보가 다 들어있죠."</li>
+                            </ul>
+                        </li>
+                        <li>구글 시트의 <strong>정렬(Sort)</strong> 기능 시연.
+                            <ul>
+                                <li>"칼로리가 가장 높은 메뉴는 뭘까? '칼로리' 열을 기준으로 '내림차순 정렬'을 해보면, 마치 키 순서대로 줄을 세우는 것처럼 한 번에 알 수 있죠."</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>실습 (20분): 첫 번째 단서 찾기</strong>
+                    <ul>
+                        <li><strong>미션 1</strong>: 단백질(Protein) 함량이 가장 높은 메뉴 Top 5 찾아보기.</li>
+                        <li><strong>미션 2</strong>: 특정 브랜드(예: 'McDonald's')의 메뉴만 보고 싶다면? <strong>필터(Filter)</strong> 기능을 사용해 'Company' 열에서 'McDonald's'만 선택해보기.</li>
+                        <li>학생들이 실습하는 동안 교사는 순회하며 개별 지도.</li>
+                        <li>짝과 함께 "정렬은 OOO할 때 쓰는 거래", "필터는 OOO랑 비슷해" 와 같이 자신만의 언어로 설명하는 시간 갖기.</li>
+                    </ul>
+                </li>
+                <li><strong>정리 (5분): 오늘의 탐정 수첩</strong>
+                    <ul>
+                        <li>오늘 배운 핵심 용어(데이터셋, 행, 열)와 기능(정렬, 필터)을 학생들에게 다시 질문하며 확인.</li>
+                        <li>"데이터 정렬을 하니 무엇을 쉽게 알 수 있었나요?"</li>
+                        <li>다음 차시 예고: "오늘은 깨끗한 사건 현장만 봤지만, 다음 시간에는 좀 더 어지러운 현장(데이터)을 정리하는 법을 배워볼 거예요."</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <hr>
+    <section class="lesson-section collapsible-section">
+        <h2 class="collapsible-header">2차시: 데이터 명탐정의 무기 - 데이터 정제와 요약 🧹 <span class="arrow">▼</span></h2>
+        <div class="collapsible-content">
+            <h3>수업 목표</h3>
+            <ul>
+                <li>데이터 정제(결측치, 이상치)의 필요성을 이해하고 처리할 수 있다.</li>
+                <li>평균, 중앙값 등 기초적인 기술 통계를 계산하고 그 의미를 설명할 수 있다.</li>
+            </ul>
+            <h3>핵심 질문 (파인만 기법 적용)</h3>
+            <blockquote>"만약 탐정 수첩에 정보가 비어 있거나(결측치), 말도 안 되는 숫자가 적혀 있으면(이상치) 어떻게 해야 할까? 범인을 잡으려면 부정확한 단서는 지우거나 고쳐야겠지? 이게 바로 '데이터 정제'야."</blockquote>
+            <h3>수업 흐름 (50분 기준)</h3>
+            <ol>
+                <li><strong>도입 (5분): 지난 시간 복습 및 오늘의 문제</strong>
+                    <ul>
+                        <li>"지난 시간에 우리는 데이터 탐정이 되어 정렬과 필터로 단서를 찾았어요. 그런데 만약 데이터에 빈칸이 있거나, 칼로리가 '99999'처럼 이상한 값이 있다면 어떨까요?"</li>
+                        <li>의도적으로 몇 개의 값을 비우거나 터무니없는 값으로 수정한 데이터 샘플 제시.</li>
+                    </ul>
+                </li>
+                <li><strong>전개 (15분): '가짜 단서' 걸러내기</strong>
+                    <ul>
+                        <li><strong>파인만 설명</strong>:
+                            <ul>
+                                <li><strong>결측치(Missing Value)</strong>: "정보가 '비어 있는 칸'이에요. 범인의 키 정보가 누락된 것처럼요. 이런 건 무시하거나(행 삭제), 아니면 다른 사람들의 평균 키로 예측해서 채워 넣을 수 있어요."</li>
+                                <li><strong>이상치(Outlier)</strong>: "상식 밖의 '튀는 값'이에요. 아기 몸무게가 100kg으로 적혀있는 것처럼요. 이런 건 오타일 가능성이 높으니 확인하고 수정하거나 제거해야 정확한 분석을 할 수 있어요."</li>
+                            </ul>
+                        </li>
+                        <li>구글 시트의 조건부 서식 기능을 이용해 특정 값(예: 0 또는 2000 이상)을 넘는 칼로리 값을 하이라이트하여 이상치를 시각적으로 찾는 방법 시연.</li>
+                    </ul>
+                </li>
+                <li><strong>실습 (25분): 데이터 깔끔하게 만들기 & 핵심 요약하기</strong>
+                    <ul>
+                        <li><strong>미션 1</strong>: 데이터에서 칼로리가 0이거나 비어있는 행을 찾아 삭제하기 (필터 기능 활용).</li>
+                        <li><strong>미션 2</strong>: 구글 시트 함수를 이용해 전체 메뉴의 평균, 중앙값, 최댓값, 최솟값 계산하기.
+                            <ul>
+                                <li><code>=AVERAGE(범위)</code>: "모든 메뉴의 칼로리를 더해서 메뉴 수로 나눈 '평균값'이야. 전체적인 수준을 알 수 있지."</li>
+                                <li><code>=MEDIAN(범위)</code>: "모든 메뉴를 칼로리 순으로 줄 세웠을 때, 딱! '가운데 있는 값'이야. 극단적인 값(이상치)에 영향을 덜 받아서 대표값으로 쓰기 좋아."</li>
+                                <li><code>=MAX(범위)</code>, <code>=MIN(범위)</code></li>
+                            </ul>
+                        </li>
+                        <li><strong>심화 미션</strong>: 특정 브랜드(예: 'Burger King')의 평균 칼로리와 'Subway'의 평균 칼로리를 비교해보기.</li>
+                        <li>짝에게 "평균이랑 중앙값은 이런 차이가 있대"라고 설명하기.</li>
+                    </ul>
+                </li>
+                <li><strong>정리 (5분): 깔끔해진 데이터, 명확해진 사실</strong>
+                    <ul>
+                        <li>"데이터 정제를 왜 해야 할까요?" (학생 답변: "분석 결과를 믿을 수 있게 만들려고요!")</li>
+                        <li>"A 브랜드의 평균 칼로리가 B보다 높다는 것은 무엇을 의미할까요?"</li>
+                        <li>다음 차시 예고: "이제 우리가 찾은 단서들을 아무도 못 본 척할 수 없게, 그림으로 그려서 멋지게 발표하는 법을 배울 거예요!"</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <hr>
+    <section class="lesson-section collapsible-section">
+        <h2 class="collapsible-header">3차시: 데이터로 이야기하기 - 시각화와 인사이트 도출 📊 <span class="arrow">▼</span></h2>
+        <div class="collapsible-content">
+            <h3>수업 목표</h3>
+            <ul>
+                <li>분석 목적에 맞는 시각화 차트(막대, 파이)를 선택하고 만들 수 있다.</li>
+                <li>차트를 근거로 자신만의 결론(인사이트)을 도출하고, 한 문장으로 요약하여 발표할 수 있다.</li>
+            </ul>
+            <h3>핵심 질문 (파인만 기법 적용)</h3>
+            <blockquote>"탐정이 범인을 잡고 나서 '제가 본 단서는요, 1번은 이거고 2번은 저거고...' 이렇게 줄줄 읽어주면 지루하겠지? 대신 '범인은 바로 이 사람입니다!'라고 외치며 결정적 증거(차트)를 딱 보여주는 거야. 이게 바로 '데이터 시각화'야."</blockquote>
+            <h3>수업 흐름 (50분 기준)</h3>
+            <ol>
+                <li><strong>도입 (5분): 백문이 불여일견</strong>
+                    <ul>
+                        <li>같은 데이터를 담은 표와 차트(막대그래프)를 동시에 보여주기.</li>
+                        <li>"어떤 것이 브랜드별 칼로리 차이를 더 쉽고 빠르게 알려주나요?"</li>
+                        <li>"네, 맞아요. 복잡한 숫자보다 한 장의 그림이 훨씬 강력한 메시지를 전달해요. 오늘은 우리가 직접 데이터로 그림을 그려 이야기를 만들어 볼 겁니다."</li>
+                    </ul>
+                </li>
+                <li><strong>전개 (15분): 상황에 맞는 차트 고르기</strong>
+                    <ul>
+                        <li><strong>파인만 설명</strong>:
+                            <ul>
+                                <li><strong>막대 차트(Bar Chart)</strong>: "여러 항목의 '크기'나 '양'을 비교할 때 최고예요. 브랜드별 평균 칼로리처럼 '누가누가 더 큰가?'를 보여줄 때 딱이죠."</li>
+                                <li><strong>파이 차트(Pie Chart)</strong>: "전체에서 각각이 '얼마나 차지하는지' 그 비율을 보여줄 때 좋아요. A 메뉴의 칼로리 중 탄수화물, 단백질, 지방이 각각 몇 퍼센트인지 보여줄 때처럼요."</li>
+                            </ul>
+                        </li>
+                        <li>구글 시트의 '차트 삽입' 기능을 이용해 막대 차트와 파이 차트를 만드는 과정 시연. (차트 제목, 축 제목, 레이블 추가 등 기본 편집 포함)</li>
+                    </ul>
+                </li>
+                <li><strong>실습 (25분): 나만의 데이터 스토리 만들기</strong>
+                    <ul>
+                        <li><strong>오늘의 최종 미션</strong>: "지금까지 배운 모든 것을 이용해, 우리 반 친구들에게 알려주고 싶은 '패스트푸드에 대한 흥미로운 사실' 한 가지를 찾아 차트로 만들고, 그 의미를 한 문장으로 설명해 보세요."</li>
+                        <li><strong>예시 주제</strong>:
+                            <ul>
+                                <li>"가장 건강한(단백질 높고 지방 낮은) 메뉴는 무엇일까?"</li>
+                                <li>"내가 좋아하는 브랜드 5개의 평균 칼로리 비교"</li>
+                                <li>"탄수화물 함량이 가장 높은 폭탄 메뉴 Top 5"</li>
+                            </ul>
+                        </li>
+                        <li>학생들은 스스로 질문을 정하고, 필요한 데이터를 필터링/정렬/계산한 후, 가장 적절한 차트로 시각화.</li>
+                        <li>차트 아래에 '결론' 한 문장 작성. (예: "분석 결과, 5개 브랜드 중 Subway의 평균 칼로리가 가장 낮아 상대적으로 가벼운 선택지임을 알 수 있다.")</li>
+                    </ul>
+                </li>
+                <li><strong>정리 및 발표 (5분): 데이터 분석가 데뷔!</strong>
+                    <ul>
+                        <li>2~3명의 학생을 선정하여 자신이 만든 차트와 결론을 전체 학생 앞에서 발표.</li>
+                        <li>"OO 학생은 어떤 이야기를 발견했나요?", "왜 이 차트를 사용했나요?" 등 질문.</li>
+                        <li>수업 전체를 마무리하며, 데이터 분석이 '숫자 계산'이 아니라 '호기심에서 출발해 증거를 기반으로 설득력 있는 이야기를 만드는 과정'임을 다시 한번 강조.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025. 모든 권리 보유.</p>
+</footer>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
